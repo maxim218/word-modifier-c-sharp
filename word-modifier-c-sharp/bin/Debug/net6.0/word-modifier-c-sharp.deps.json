@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "word-modifier-c-sharp/1.0.0": {
+        "runtime": {
+          "word-modifier-c-sharp.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "word-modifier-c-sharp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

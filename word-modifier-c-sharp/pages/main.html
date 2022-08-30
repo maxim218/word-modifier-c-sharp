@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <style>
+        body {
+            padding: 20px;
+            background: wheat;
+        }
+    </style>
+</head>
+<body>
+    
+<h1>Main page</h1>
+
+<p>Input string to modify</p>
+<input type="text" spellcheck="false" autocomplete="off" id="input-field-modify-id">
+<br>
+
+<p>Input delta</p>
+<input type="text" spellcheck="false" autocomplete="off" id="input-field-delta-id">
+<br>
+<br>
+<button id="btn-id">Get modified string</button>
+
+<br>
+<br>
+
+<h2 id="label-result-id"></h2>
+
+<script>
+    "use strict";
+
+    function ajaxGet(urlString, callback) {
+        let r = new XMLHttpRequest();
+        r.open("GET", urlString, true);
+        r.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+        r.send(null);
+        r.onload = function() {
+            callback(r.response);
+        };
+    }
+
+    function getById(id) {
+        return document.getElementById(id);
+    }
+
+    window.onload = function() {
+        getById("btn-id").onclick = function() {
+            const input = getById("input-field-modify-id").value.trim();
+            const delta = getById("input-field-delta-id").value.trim();
+            if(!input || !delta) {
+                alert("Input field is empty");
+                return;
+            }
+            const deltaInt = parseInt(delta) || 0;
+            const urlString = `/api/modify-string/get?input=${input}&delta=${deltaInt}`;
+            ajaxGet(urlString.trim(), (answerString) => {
+                getById("label-result-id").innerHTML = answerString.trim();
+            });
+        };
+    };
+</script>
+
+</body>
+</html>
+
+
+
